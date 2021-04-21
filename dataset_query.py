@@ -8,11 +8,66 @@ To add a new function do the following:
 """
 
 def insert_business(db):
-    print("insert business")
+    print("== Insert business ==")
+
+    while True:
+        name = input("Exact business name: ")
+        address = input("Exact business address (ex: 123 Fake Ave): ")
+        city = input("City: ")
+        state = input ("State (ex: CA, OR, etc.): ")
+        postal_code = input("Postal code: ")
+        lat = input("Latitude: ")
+        lon = input("Longitude: ")
+
+        print("Categories (enter q to cancel): ")
+        categories = None
+        while True:
+            cat = input(" - ")
+
+            if cat == "q" or cat == "Q":
+                break
+            
+            if (categories == None):
+                categories = cat
+            else:
+                cat_f = ", "
+                cat_f += cat
+                categories += cat_f 
+
+        confirm = input("Are you sure you wish to insert {}? (y/n) ".format(name))
+
+        # Confirm input
+        if confirm != "y" and confirm != "Y":
+            break
+
+        # Enter query
+        query = {
+            "name": name,
+            "address": address,
+            "city": city,
+            "state": state,
+            "postal_code": postal_code,
+            "latutude": lat,
+            "longitude": lon,
+            "stars": 0.0,
+            "review_count": 0,
+            "is_open": 1,
+            "attributes": None,
+            "categories": categories,
+            "hours": None
+        }
+        result = db.business.insert_one(query)
+        
+        if result.inserted_id:
+            print("{} successfully inserted".format(name))
+            break
+
+        print("{} insert unsuccessful".format(name))
+
 
 
 def insert_review(db):
-    print("insert review")
+    print("== Insert review ==")
 
 
 def delete_business(db):
@@ -40,8 +95,6 @@ def delete_business(db):
 
 
 
-
-
 def main():
     # Make database connection
     client = MongoClient('localhost', 27017)
@@ -55,13 +108,12 @@ def main():
         2 : delete_business
     } 
 
-
     while True:
         print("\nCurrently supported operations:")
         print("    (0): Insert business")
         print("    (1): Insert review")
         print("    (2): Delete business")
-        print("    (q): Quit app")
+        print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
         if user_input == "q" or user_input == "Q":
