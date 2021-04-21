@@ -1,22 +1,8 @@
 from pymongo import MongoClient
 
-"""
-To add a new function do the following:
-    1) create a new function
-    2) add function name to the operations map in main
-    3) add function description with associated number to program output
-"""
-
-def insert_business():
-    print("insert business")
-
-
-def insert_review():
-    print("insert review")
-
-
-def delete_business():
-    print("delete business")
+from deletes.delete_business import delete_business
+from insertions.insert_business import insert_business
+from insertions.insert_review import insert_review
 
 
 def main():
@@ -32,13 +18,12 @@ def main():
         2 : delete_business
     } 
 
-
     while True:
         print("\nCurrently supported operations:")
         print("    (0): Insert business")
         print("    (1): Insert review")
         print("    (2): Delete business")
-        print("    (q): Quit app")
+        print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
         if user_input == "q" or user_input == "Q":
@@ -50,7 +35,7 @@ def main():
             print("Invalid number")
             continue
 
-        operations[user_input]()
+        operations[user_input](db)
     
 
 main()
