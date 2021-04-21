@@ -7,16 +7,39 @@ To add a new function do the following:
     3) add function description with associated number to program output
 """
 
-def insert_business():
+def insert_business(db):
     print("insert business")
 
 
-def insert_review():
+def insert_review(db):
     print("insert review")
 
 
-def delete_business():
-    print("delete business")
+def delete_business(db):
+    print("== Delete business ==")
+    
+    while True:
+        name = input("Exact business name: ")
+        address = input("Exact business address (ex: 123 Fake Ave): ")
+        city = input("City: ")
+        state = input ("State (ex: CA, OR, etc.): ")
+        confirm = input("Are you sure you wish to delete {}? (y/n) ".format(name))
+
+        # Confirm input
+        if confirm != "y" and confirm != "Y":
+            break
+
+        # Enter query
+        result = db.business.delete_one({"name": name, "address": address, "city": city, "state": state})
+        
+        if result.deleted_count == 1:
+            print("{} successfully deleted".format(name))
+            break
+
+        print("{} not found in database".format(name))
+
+
+
 
 
 def main():
@@ -50,7 +73,7 @@ def main():
             print("Invalid number")
             continue
 
-        operations[user_input]()
+        operations[user_input](db)
     
 
 main()
