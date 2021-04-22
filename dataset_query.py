@@ -5,7 +5,7 @@ from deletes.delete_business import delete_business
 from insertions.insert_business import insert_business
 from insertions.insert_review import insert_review
 from insertions.insert_tip import insert_tip
-
+from updates.update_business_hours import updateBusinessHours
 def main():
     # Make database connection
     client = MongoClient('localhost', 27017)
