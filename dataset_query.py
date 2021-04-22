@@ -21,7 +21,8 @@ def main():
         0 : insert_business,
         1 : insert_review,
         2:  insert_tip,
-        3 : delete_business
+        3 : delete_business,
+        4 : updateBusinessHours
     } 
 
     while True:
@@ -30,6 +31,7 @@ def main():
         print("    (1): Insert review")
         print("    (2): Insert Tip")
         print("    (3): Delete business")
+        print("    (4): Update business hours")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
