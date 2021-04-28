@@ -2,6 +2,7 @@
 from pymongo import MongoClient
 
 from deletes.delete_business import delete_business
+from deletes.delete_review import delete_review
 
 from insertions.insert_business import insert_business
 from insertions.insert_review import insert_review
@@ -18,7 +19,7 @@ def main():
     if db:
         print("Database connection established")
     else:
-        print("Databse connection not established")
+        print("Database connection not established")
 
     # operations map
     operations = {
@@ -26,8 +27,9 @@ def main():
         1 : insert_review,
         2 : insert_tip,
         3 : delete_business,
-        4 : find_top3_tips,
-        5 : updateBusinessHours
+        4:  delete_review,
+        5 : find_top3_tips,
+        6 : updateBusinessHours
     } 
 
     while True:
@@ -36,8 +38,9 @@ def main():
         print("    (1): Insert review")
         print("    (2): Insert Tip")
         print("    (3): Delete business")
-        print("    (4): Find top tips for business")
-        print("    (5): Update business hours")
+        print("    (4): Delete review")
+        print("    (5): Find top tips for business")
+        print("    (6): Update business hours")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
