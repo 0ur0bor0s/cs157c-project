@@ -10,8 +10,10 @@ from insertions.insert_tip import insert_tip
 
 from reads.find_top_tips import find_top3_tips
 from reads.list_category_rest_takeout import list_category_rest_takeout
+from reads.get_romantic_restaurants import getRomanticAmbience
 
 from updates.update_business_hours import updateBusinessHours
+
 def main():
     # Make database connection
     client = MongoClient('localhost', 27017)
@@ -31,7 +33,8 @@ def main():
         4:  delete_review,
         5 : find_top3_tips,
         6:  list_category_rest_takeout,
-        7 : updateBusinessHours
+        7 : updateBusinessHours,
+        8 : getRomanticAmbience
     } 
 
     while True:
@@ -44,6 +47,7 @@ def main():
         print("    (5): Find top tips for business")
         print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
         print("    (7): Update business hours")
+        print("    (8): Find romantic restaurants in a city")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
