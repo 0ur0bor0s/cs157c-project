@@ -9,6 +9,7 @@ from insertions.insert_review import insert_review
 from insertions.insert_tip import insert_tip
 
 from reads.find_top_tips import find_top3_tips
+from reads.list_category_rest_takeout import list_category_rest_takeout
 
 from updates.update_business_hours import updateBusinessHours
 def main():
@@ -29,7 +30,8 @@ def main():
         3 : delete_business,
         4:  delete_review,
         5 : find_top3_tips,
-        6 : updateBusinessHours
+        6:  list_category_rest_takeout,
+        7 : updateBusinessHours
     } 
 
     while True:
@@ -40,7 +42,8 @@ def main():
         print("    (3): Delete business")
         print("    (4): Delete review")
         print("    (5): Find top tips for business")
-        print("    (6): Update business hours")
+        print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
+        print("    (7): Update business hours")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
