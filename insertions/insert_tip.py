@@ -15,7 +15,7 @@ def insert_tip(db):
         city = input("Enter exact city: ")
         state = input("Enter exact state (ex: TX): ")
         # query database to find business
-        result = db.businesses.find_one({ "name": name, 
+        result = db.business.find_one({ "name": name, 
                                         "address": address, 
                                         "city": city, "state": state })
 
@@ -37,7 +37,7 @@ def insert_tip(db):
                   "date" : datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
                   "compliment_count" : 0 }
     
-    result = db.tips.insert_one(insertion)
+    result = db.tip.insert_one(insertion)
 
     if result.inserted_id:
         print("Tip successfully inserted")

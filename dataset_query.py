@@ -9,7 +9,7 @@ from updates.update_business_hours import updateBusinessHours
 def main():
     # Make database connection
     client = MongoClient('localhost', 27017)
-    db = client.testdb
+    db = client['yelp_dataset']
 
     if db:
         print("Database connection established")
