@@ -9,6 +9,7 @@ from insertions.insert_review import insert_review
 from insertions.insert_tip import insert_tip
 
 from reads.find_top_tips import find_top3_tips
+from reads.list_by_specified_time import list_by_specified_time
 from reads.list_category_rest_takeout import list_category_rest_takeout
 from reads.get_romantic_restaurants import getRomanticAmbience
 from reads.top_10_cities_category import top_10_cities_category
@@ -34,9 +35,10 @@ def main():
         4:  delete_review,
         5 : find_top3_tips,
         6:  list_category_rest_takeout,
-        7 : updateBusinessHours,
-        8 : getRomanticAmbience,
-        9 : top_10_cities_category
+        7:  list_by_specified_time,
+        8 : updateBusinessHours,
+        9 : getRomanticAmbience,
+        10 : top_10_cities_category
     } 
 
     while True:
@@ -48,9 +50,10 @@ def main():
         print("    (4): Delete review")
         print("    (5): Find top tips for business")
         print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
-        print("    (7): Update business hours")
-        print("    (8): Find romantic restaurants in a city")
-        print("    (9): Find Top 10 Cities for Specific Category")
+        print("    (7): List businesses / restaurants by specified time.")
+        print("    (8): Update business hours")
+        print("    (9): Find romantic restaurants in a city")
+        print("    (10): Find Top 10 Cities for Specific Category")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
