@@ -13,6 +13,7 @@ from reads.list_by_specified_time import list_by_specified_time
 from reads.list_category_rest_takeout import list_category_rest_takeout
 from reads.get_romantic_restaurants import getRomanticAmbience
 from reads.top_10_cities_category import top_10_cities_category
+from reads.business_with_wifi_exact import getBusinessWithWifi
 
 from updates.update_business_hours import updateBusinessHours
 
@@ -38,7 +39,8 @@ def main():
         7:  list_by_specified_time,
         8 : updateBusinessHours,
         9 : getRomanticAmbience,
-        10 : top_10_cities_category
+        10: getBusinessWithWifi,
+        11 : top_10_cities_category
     } 
 
     while True:
@@ -53,7 +55,8 @@ def main():
         print("    (7): List businesses / restaurants by specified time.")
         print("    (8): Update business hours")
         print("    (9): Find romantic restaurants in a city")
-        print("    (10): Find Top 10 Cities for Specific Category")
+        print("    (10): Find Businesses with Wi-Fi in a city")
+        print("    (11): Find Top 10 Cities for Specific Category")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
