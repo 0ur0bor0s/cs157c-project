@@ -3,8 +3,14 @@ import json
 import re
 import geocoder
 import pdb
+from pymongo import ASCENDING, DESCENDING
+
 def getBusinessWithWifi(db):
+    # Create index first to search faster
+    db.business.create_index([("state", ASCENDING), ("city", ASCENDING)])
+
     collection = db['business']
+    
     while(True):
         print("Enter a city you want to search in")
         city = input()
@@ -37,6 +43,10 @@ def getBusinessWithWifi(db):
         
         if(choice.lower() == 'n'):
             break
+
+        
+    # Once you're done, drop the user-defined indexes in case application wants to do writes
+    db.business.drop_indexes()
             
 
 

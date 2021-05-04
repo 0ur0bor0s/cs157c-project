@@ -1,9 +1,14 @@
+# RALPH
 import datetime
 import pymongo
+from pymongo import ASCENDING, DESCENDING
 
 # Used Case #14: List of restaurants of a certain category (i.e. Mexican, Japanese, Indian, Hawaiin, etc) and offers take-out and has at least 3 stars (limit 5 restaurants).
 
 def list_category_rest_takeout(db):
+    # Create index first to search faster
+    db.business.create_index([("state", ASCENDING), ("city", ASCENDING)])
+
     print("== List Restaurants That Do Takeout and of Certain Category Within Area (Zipcode) =====")
     found_busi = False
     city, state, zipcode = "", "", ""
@@ -50,4 +55,7 @@ def list_category_rest_takeout(db):
         print("------------------------------\n")
 
     print("\n{} Restaurants found\n".format(i))
+
+    # Once you're done, drop the user-defined indexes in case application wants to do writes
+    db.business.drop_indexes()
     

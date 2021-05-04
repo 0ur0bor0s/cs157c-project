@@ -1,5 +1,8 @@
+# RALPH
 from datetime import datetime, timedelta
 import pymongo
+from pymongo import ASCENDING, DESCENDING
+
 
 def parse_time(s):
     return datetime.strptime(s, '%H:%M')
@@ -17,6 +20,9 @@ def check_in_range(start, end, input_time):
     return (start_time <= checked_time < end_time)
 
 def list_by_specified_time(db):
+    # Create index first to search faster
+    db.business.create_index([("state", ASCENDING), ("city", ASCENDING)])
+
     print("== List Businesses / Restaurants Within Area (Zipcode) By Time =====")
     found_busi = False
     city, state, zipcode = "", "", ""
@@ -67,4 +73,7 @@ def list_by_specified_time(db):
                 print("Categories: {}".format(rest["categories"] ))
                 print("{} Times: {}".format(specified_day, rest["hours"][specified_day]))
                 print("------------------------------\n")
+
+    # Once you're done, drop the user-defined indexes in case application wants to do writes
+    db.business.drop_indexes()
     

@@ -1,8 +1,13 @@
+# RALPH
 import datetime
 import pymongo
+from pymongo import ASCENDING, DESCENDING
 
 
 def find_top3_tips(db):
+    # Create index first to search faster
+    db.business.create_index([("state", ASCENDING), ("city", ASCENDING)])
+
     print("== List Top 3 Tips of Restaurant ==")
     found_busi = False
     name, address, city, state, text_tip = "", "", "", "", ""
@@ -41,4 +46,7 @@ def find_top3_tips(db):
         i = i + 1
         print(" ({}) {} - Compliment Count: {}".format(i, tip["text"], tip["compliment_count"]))
     print("\n{} tips found\n".format(i))
+
+    # Once you're done, drop the user-defined indexes in case application wants to do writes
+    db.business.drop_indexes()
         
