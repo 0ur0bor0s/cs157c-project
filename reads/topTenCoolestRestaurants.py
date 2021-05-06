@@ -11,7 +11,7 @@ def topTenCoolestRestaurants(db):
         print("Enter a pin code")
         pincode = input()
         resultDocs = []
-        resultDocs = list(businessCollection.find({"$and":[{"city":city},{"state":state},{"postal_code":pincode}]},{"business_id":1}))
+        resultDocs = list(businessCollection.find({"$and":[{"city":city},{"state":state},{"postal_code":pincode},{"categories" : {"$regex": "Restaurants"}}]},{"business_id":1}))
         if(len(resultDocs) != 0):
             businessIDs = []
             for resultDoc in resultDocs:
@@ -31,9 +31,9 @@ def topTenCoolestRestaurants(db):
 		 
             ]))
     
-    
+            
             finalOutput = {}
-            for k in range(0,10):
+            for k in range(0,len(aggResults)):
                 business_id = aggResults[k]["_id"]
                 names = list(businessCollection.find({"business_id" : business_id},{"name" : 1}))
                 for one_name in range(0,1):
