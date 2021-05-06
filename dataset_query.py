@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 from pymongo import MongoClient
 
+# Delete import
 from deletes.delete_business import delete_business
 from deletes.delete_review import delete_review
 
+# Insertion import
 from insertions.insert_business import insert_business
 from insertions.insert_review import insert_review
 from insertions.insert_tip import insert_tip
 
+# Reads import
 from reads.find_top_tips import find_top3_tips
 from reads.list_by_specified_time import list_by_specified_time
 from reads.list_category_rest_takeout import list_category_rest_takeout
@@ -17,9 +20,11 @@ from reads.business_with_wifi_exact import getBusinessWithWifi
 from reads.topTenCoolestRestaurants import topTenCoolestRestaurants
 from reads.top20UsersBasedOnTips import topUsersByCompliments
 
+# Update import
 from updates.update_business_hours import updateBusinessHours
 
-from analysis.top_five_words import top_five_words
+# Analysis import
+from analysis.top_ten_words import top_ten_words
 
 def main():
     # Make database connection
@@ -47,39 +52,45 @@ def main():
         11: top_10_cities_category,
         12: topTenCoolestRestaurants,
         13: topUsersByCompliments,
-        14: top_five_words
+        14: top_ten_words
     } 
 
-    while True:
-        print("\nCurrently supported operations:")
-        print("    (0): Insert business")
-        print("    (1): Insert review")
-        print("    (2): Insert Tip")
-        print("    (3): Delete business")
-        print("    (4): Delete review")
-        print("    (5): Find top tips for business")
-        print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
-        print("    (7): List businesses / restaurants by specified time.")
-        print("    (8): Update business hours")
-        print("    (9): Find romantic restaurants in a city(atleast 3 stars)")
-        print("    (10): Find Businesses with Wi-Fi in a city")
-        print("    (11): Find Top 10 Cities for Specific Category")
-        print("    (12): Find Top 10 coolest restaurants in a city")
-        print("    (13): Find Top 20 users based on tips given")
-        print("    (14): Find the top 5 most used words to describe a resteraunt in a review")
-        print("    (q): Quit app\n")
+    print("\nCurrently supported operations:")
+    print("    (0): Insert business")
+    print("    (1): Insert review")
+    print("    (2): Insert Tip")
+    print("    (3): Delete business")
+    print("    (4): Delete review")
+    print("    (5): Find top tips for business")
+    print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
+    print("    (7): List businesses / restaurants by specified time.")
+    print("    (8): Update business hours")
+    print("    (9): Find romantic restaurants in a city(atleast 3 stars)")
+    print("    (10): Find Businesses with Wi-Fi in a city")
+    print("    (11): Find Top 10 Cities for Specific Category")
+    print("    (12): Find Top 10 coolest restaurants in a city")
+    print("    (13): Find Top 20 users based on tips given")
+    print("    (14): Find the top 5 most used words to describe a resteraunt in a review")
+    print("    (q): Quit app\n")
+
+    While True:
         user_input = input("Enter the number of the operation you wish to perform: ")
         
-        if user_input == "q" or user_input == "Q":
-            break
+        try:
+            if user_input == "q" or user_input == "Q":
+                break
 
-        user_input = int(user_input)
+            user_input = int(user_input)
 
-        if user_input > len(operations) - 1 or user_input < 0:
-            print("Invalid number")
+            if user_input > len(operations) - 1 or user_input < 0:
+                print("Invalid number")
+                continue
+
+            operations[user_input](db)
+
+        except ValueError:
+            print("Invalid input")
             continue
-
-        operations[user_input](db)
-    
+        
 
 main()
