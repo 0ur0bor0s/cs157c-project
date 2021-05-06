@@ -55,42 +55,49 @@ def main():
         14: top_ten_words
     } 
 
-    print("\nCurrently supported operations:")
-    print("    (0): Insert business")
-    print("    (1): Insert review")
-    print("    (2): Insert Tip")
-    print("    (3): Delete business")
-    print("    (4): Delete review")
-    print("    (5): Find top tips for business")
-    print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
-    print("    (7): List businesses / restaurants by specified time.")
-    print("    (8): Update business hours")
-    print("    (9): Find romantic restaurants in a city(atleast 3 stars)")
-    print("    (10): Find Businesses with Wi-Fi in a city")
-    print("    (11): Find Top 10 Cities for Specific Category")
-    print("    (12): Find Top 10 coolest restaurants in a city")
-    print("    (13): Find Top 20 users based on tips given")
-    print("    (14): Find the top 5 most used words to describe a resteraunt in a review")
-    print("    (q): Quit app\n")
 
     while True:
-        user_input = input("Enter the number of the operation you wish to perform: ")
-        
-        try:
+        print("\nCurrently supported operations:")
+        print("    (0): Insert business")
+        print("    (1): Insert review")
+        print("    (2): Insert Tip")
+        print("    (3): Delete business")
+        print("    (4): Delete review")
+        print("    (5): Find top tips for business")
+        print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
+        print("    (7): List businesses / restaurants by specified time.")
+        print("    (8): Update business hours")
+        print("    (9): Find romantic restaurants in a city(atleast 3 stars)")
+        print("    (10): Find Businesses with Wi-Fi in a city")
+        print("    (11): Find Top 10 Cities for Specific Category")
+        print("    (12): Find Top 10 coolest restaurants in a city")
+        print("    (13): Find Top 20 users based on tips given")
+        print("    (14): Find the top 5 most used words to describe a restaraunt in a review")
+        print("    (q): Quit app\n")
+
+        while True:
+            user_input = input("Enter the number of the operation you wish to perform: ")
+
+            # Exit Program
             if user_input == "q" or user_input == "Q":
-                break
+                exit(0)
 
-            user_input = int(user_input)
+            try:
+                # cast to int
+                user_input = int(user_input)
+                
+                # Error: Invalid number
+                while user_input > len(operations) - 1 or user_input < 0:
+                    print("Invalid number")
+                    continue 
 
-            if user_input > len(operations) - 1 or user_input < 0:
-                print("Invalid number")
+            except ValueError: # Error: invlaid input
+                print("Invalid input")
                 continue
 
-            operations[user_input](db)
+            break
 
-        except ValueError:
-            print("Invalid input")
-            continue
-        
+        operations[user_input](db)
+ 
 
 main()
