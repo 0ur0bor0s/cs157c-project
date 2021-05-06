@@ -55,7 +55,6 @@ def main():
         14: top_ten_words
     } 
 
-
     print("\nCurrently supported operations:")
     print("    (0): Insert business")
     print("    (1): Insert review")
@@ -66,15 +65,15 @@ def main():
     print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
     print("    (7): List businesses / restaurants by specified time.")
     print("    (8): Update business hours")
-    print("    (9): Find romantic restaurants in a city")
+    print("    (9): Find romantic restaurants in a city(atleast 3 stars)")
     print("    (10): Find Businesses with Wi-Fi in a city")
     print("    (11): Find Top 10 Cities for Specific Category")
     print("    (12): Find Top 10 coolest restaurants in a city")
     print("    (13): Find Top 20 users based on tips given")
-    print("    (14): Find the top 10 most used words to describe a resteraunt in a review")
+    print("    (14): Find the top 5 most used words to describe a resteraunt in a review")
     print("    (q): Quit app\n")
-    
-    while True:
+
+    While True:
         user_input = input("Enter the number of the operation you wish to perform: ")
         
         try:
