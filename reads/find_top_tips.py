@@ -27,7 +27,7 @@ def find_top3_tips(db):
                                     "address": address, 
                                     "city": city, "state": state }))
 
-        if result is None:
+        if len(result) == 0:
             print("No results found. Please try again. \n")
             continue
         else:

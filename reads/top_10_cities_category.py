@@ -22,7 +22,7 @@ def top_10_cities_category(db):
             'avg': { '$avg': '$stars' }, 'total': { '$sum' : 1 }  } }, 
             { '$sort': { 'total': -1, 'avg': -1 } }, { '$limit': 10 } ] ) )
         
-        if result is None:
+        if len(result) == 0:
             print("No results found. Please try again. \n")
             continue
         else:

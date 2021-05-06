@@ -19,6 +19,8 @@ from reads.top20UsersBasedOnTips import topUsersByCompliments
 
 from updates.update_business_hours import updateBusinessHours
 
+from analysis.top_five_words import top_five_words
+
 def main():
     # Make database connection
     client = MongoClient('localhost', 27017)
@@ -31,20 +33,21 @@ def main():
 
     # operations map
     operations = {
-        0 : insert_business,
-        1 : insert_review,
-        2 : insert_tip,
-        3 : delete_business,
-        4:  delete_review,
-        5 : find_top3_tips,
+        0: insert_business,
+        1: insert_review,
+        2: insert_tip,
+        3: delete_business,
+        4: delete_review,
+        5: find_top3_tips,
         6:  list_category_rest_takeout,
         7:  list_by_specified_time,
-        8 : updateBusinessHours,
-        9 : getRomanticAmbience,
+        8: updateBusinessHours,
+        9: getRomanticAmbience,
         10: getBusinessWithWifi,
-        11 : top_10_cities_category,
-        12 : topTenCoolestRestaurants,
-        13 : topUsersByCompliments
+        11: top_10_cities_category,
+        12: topTenCoolestRestaurants,
+        13: topUsersByCompliments,
+        14: top_five_words
     } 
 
     while True:
@@ -63,6 +66,7 @@ def main():
         print("    (11): Find Top 10 Cities for Specific Category")
         print("    (12): Find Top 10 coolest restaurants in a city")
         print("    (13): Find Top 20 users based on tips given")
+        print("    (14): Find the top 5 most used words to describe a resteraunt in a review")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         

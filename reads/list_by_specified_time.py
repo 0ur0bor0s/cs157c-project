@@ -42,7 +42,7 @@ def list_by_specified_time(db):
                                         "postal_code": zipcode } ))
         
 
-        if result is None:
+        if len(result) == 0:
             print("No businesses found. Please try again. \n")
             continue
         else:
