@@ -46,7 +46,7 @@ def delete_review(db):
         result = db.review.delete_one(document_sel)
 
         if result.deleted_count == 1:
-            print("{} successfully deleted".format(name))
+            print("Review successfully deleted")
             break
         else:
             print("Review not successfully deleted")
