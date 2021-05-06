@@ -61,7 +61,7 @@ def main():
         print("    (6): List take-out restaurants by certain category (at least 3 stars) ")
         print("    (7): List businesses / restaurants by specified time.")
         print("    (8): Update business hours")
-        print("    (9): Find romantic restaurants in a city")
+        print("    (9): Find romantic restaurants in a city(atleast 3 stars)")
         print("    (10): Find Businesses with Wi-Fi in a city")
         print("    (11): Find Top 10 Cities for Specific Category")
         print("    (12): Find Top 10 coolest restaurants in a city")
