@@ -73,7 +73,7 @@ def main():
     print("    (14): Find the top 5 most used words to describe a resteraunt in a review")
     print("    (q): Quit app\n")
 
-    While True:
+    while True:
         user_input = input("Enter the number of the operation you wish to perform: ")
         
         try:
