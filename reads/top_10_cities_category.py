@@ -28,7 +28,6 @@ def top_10_cities_category(db):
         else:
             found_busi = True
     
-    print(result)
     if category.lower() == "exit":
         return
     

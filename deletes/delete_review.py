@@ -35,7 +35,7 @@ def delete_review(db):
         if option == 'q':
             break
         
-        confirm = input("Are you sure you wish to delete {}? (y/n) ".format(name))
+        confirm = input("Are you sure you wish to delete this review? (y/n) ")
 
         # Confirm input
         if confirm != "y" and confirm != "Y":
@@ -46,7 +46,7 @@ def delete_review(db):
         result = db.review.delete_one(document_sel)
 
         if result.deleted_count == 1:
-            print("{} successfully deleted".format(name))
+            print("Review successfully deleted")
             break
         else:
             print("Review not successfully deleted")
