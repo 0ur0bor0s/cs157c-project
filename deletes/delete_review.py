@@ -35,7 +35,7 @@ def delete_review(db):
         if option == 'q':
             break
         
-        confirm = input("Are you sure you wish to delete {}? (y/n) ".format(name))
+        confirm = input("Are you sure you wish to delete this review? (y/n) ")
 
         # Confirm input
         if confirm != "y" and confirm != "Y":
