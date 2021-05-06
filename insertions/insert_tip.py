@@ -19,7 +19,6 @@ def insert_tip(db):
                                         "address": address, 
                                         "city": city, "state": state })
 
-        print(result)
         if result is None:
             print("No results found. Please try again. \n")
             continue
