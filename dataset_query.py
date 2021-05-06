@@ -72,7 +72,7 @@ def main():
         print("    (11): Find Top 10 Cities for Specific Category")
         print("    (12): Find Top 10 coolest restaurants in a city")
         print("    (13): Find Top 20 users based on tips given")
-        print("    (14): Find the top 5 most used words to describe a restaraunt in a review")
+        print("    (14): Find the top 10 most used words to describe a restaraunt in a review")
         print("    (q): Quit app\n")
 
         while True:
@@ -91,7 +91,7 @@ def main():
                     print("Invalid number")
                     continue 
 
-            except ValueError: # Error: invlaid input
+            except ValueError: # Error: Invalid input
                 print("Invalid input")
                 continue
 
