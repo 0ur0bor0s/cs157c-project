@@ -43,8 +43,8 @@ def find_business(db):
 
 
 
-def top_five_words(db):
-    print("== Top five words ==")
+def top_ten_words(db):
+    print("== Top ten words ==")
 
     b_again = True
     while b_again:
@@ -92,14 +92,14 @@ def top_five_words(db):
                 # increment word count
                 word_dict[token] += 1
 
-            # only check 10 reviews
-            if idx > 10:
+            # only check 300 reviews
+            if idx > 300:
                 break
 
         
         # Get top 5 most used words for review
-        print("\nTop Five Most used words for {}\n".format(business_name))
-        for i in range(5):
+        print("\nTop Ten Most used words for {}\n".format(business_name))
+        for i in range(10):
             top_tuple = max(word_dict.items(), key=operator.itemgetter(1))
             
             print("Number {}:".format(i+1))

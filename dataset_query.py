@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 from pymongo import MongoClient
 
+# Delete import
 from deletes.delete_business import delete_business
 from deletes.delete_review import delete_review
 
+# Insertion import
 from insertions.insert_business import insert_business
 from insertions.insert_review import insert_review
 from insertions.insert_tip import insert_tip
 
+# Reads import
 from reads.find_top_tips import find_top3_tips
 from reads.list_by_specified_time import list_by_specified_time
 from reads.list_category_rest_takeout import list_category_rest_takeout
@@ -17,9 +20,11 @@ from reads.business_with_wifi_exact import getBusinessWithWifi
 from reads.topTenCoolestRestaurants import topTenCoolestRestaurants
 from reads.top20UsersBasedOnTips import topUsersByCompliments
 
+# Update import
 from updates.update_business_hours import updateBusinessHours
 
-from analysis.top_five_words import top_five_words
+# Analysis import
+from analysis.top_ten_words import top_ten_words
 
 def main():
     # Make database connection
@@ -47,7 +52,7 @@ def main():
         11: top_10_cities_category,
         12: topTenCoolestRestaurants,
         13: topUsersByCompliments,
-        14: top_five_words
+        14: top_ten_words
     } 
 
     while True:
@@ -66,7 +71,7 @@ def main():
         print("    (11): Find Top 10 Cities for Specific Category")
         print("    (12): Find Top 10 coolest restaurants in a city")
         print("    (13): Find Top 20 users based on tips given")
-        print("    (14): Find the top 5 most used words to describe a resteraunt in a review")
+        print("    (14): Find the top 10 most used words to describe a resteraunt in a review")
         print("    (q): Quit app\n")
         user_input = input("Enter the number of the operation you wish to perform: ")
         
