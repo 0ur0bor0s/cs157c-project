@@ -1,8 +1,5 @@
 import pymongo
-import json
-import re
-import geocoder
-import pdb
+
 from pymongo import ASCENDING, DESCENDING
 
 def getBusinessWithWifi(db):
@@ -20,7 +17,7 @@ def getBusinessWithWifi(db):
         pincode = input()
         #businesses = list()
         
-        businesses = list(collection.find({"$and":[{"attributes.WiFi":{"$regex": "u'free'"}},{"city": city},{"state": state},{"postal_code": pincode}]}))
+        businesses = list(collection.find({"$and":[{"attributes.WiFi":{"$regex": "free"}},{"city": city},{"state": state},{"postal_code": pincode}]}))
         names = []
         if(len(businesses) != 0):
             print("Businesses  with Wi-Fi:")
