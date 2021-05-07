@@ -2,46 +2,7 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 import operator
 
-"""
-    Helper function to find business
-"""
-def find_business(db):
-
-    while True:
-        business_name = input("Enter the exact name of the business: ")
-        
-        # find business that match
-        business_result = db.business.find({"name": business_name})
-
-        if business_result.count() != 0:
-            print("Businesses found")
-            break
-    
-        print("No business found")
-
-    # Iterate through business to choose the correct one 
-    ids = []  
-    print("") 
-    for idx, b in enumerate(business_result):
-        print(" ======= ")   
-        print(" ({}) {}".format(idx, b["name"]))
-        print("     {}".format(b["address"]))
-        print("     {}, {}".format(b["city"], b["state"]))
-        print(" ======= ")
-        ids.append(b["business_id"]) 
-    print("\n{} business(es) found\n".format(business_result.count()))
-
-    # Get business user wishes to write a review for
-    bus_num = input("Select one of the following businesses by number: ")
-    
-    while int(bus_num) > business_result.count()-1 or int(bus_num) < 0:
-        bus_num = input("Invalid entry: ")
-
-    business_id = ids[int(bus_num)]
-
-    return (business_id, business_name)
-
-
+from analysis.find_business import find_business
 
 def top_ten_words(db):
     print("== Top ten words ==")
@@ -49,7 +10,7 @@ def top_ten_words(db):
     b_again = True
     while b_again:
         
-        # get business id of business
+        # Get business id and name
         (business_id, business_name) = find_business(db)
 
         # Query for reviewd for this business
@@ -79,7 +40,6 @@ def top_ten_words(db):
                 r_tokens[i] = r_tokens[i].lower()
 
             # filter out stop words
-            #filtered_tokens = [w for w in word_dict if not w in stop_words]
             filtered_tokens = []
             for w in r_tokens:
                 if w not in stop_words:
@@ -93,7 +53,7 @@ def top_ten_words(db):
                 word_dict[token] += 1
 
             # only check 300 reviews
-            if idx > 300:
+            if idx+1 >= 300:
                 break
 
         

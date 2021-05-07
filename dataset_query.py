@@ -25,6 +25,7 @@ from updates.update_business_hours import updateBusinessHours
 
 # Analysis import
 from analysis.top_ten_words import top_ten_words
+from analysis.sentiment import sentiment
 
 def main():
     # Make database connection
@@ -52,7 +53,8 @@ def main():
         11: top_10_cities_category,
         12: topTenCoolestRestaurants,
         13: topUsersByCompliments,
-        14: top_ten_words
+        14: top_ten_words,
+        15: sentiment
     } 
 
 
@@ -73,6 +75,7 @@ def main():
         print("    (12): Find Top 10 coolest restaurants in a city")
         print("    (13): Find Top 20 users based on tips given")
         print("    (14): Find the top 10 most used words to describe a restaraunt in a review")
+        print("    (15): Analyze the sentiment of the reviews for a given business")
         print("    (q): Quit app\n")
 
         while True:
