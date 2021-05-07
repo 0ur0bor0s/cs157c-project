@@ -18,16 +18,16 @@ def getBusinessWithWifi(db):
         state = input()
         print("Enter the exact postal-code")
         pincode = input()
-        businesses = list()
+        #businesses = list()
         
-        businesses = list(collection.find({"$and":[{"attributes.WiFi":{"$regex": "u'free'"}},{"city": city},{"state": state},{"postal_code": pincode}]},{"name":1}))
+        businesses = list(collection.find({"$and":[{"attributes.WiFi":{"$regex": "u'free'"}},{"city": city},{"state": state},{"postal_code": pincode}]}))
         names = []
         if(len(businesses) != 0):
             print("Businesses  with Wi-Fi:")
-            for business in businesses:
-                names += [business["name"]]
-            for name in names:
-                print(name)
+            
+            for num in range(0,len(businesses)):
+                print("Name:"+businesses[num]["name"])
+                print("Address:"+businesses[num]["address"])
                 
         else:
             print("No result found.Please try again")
