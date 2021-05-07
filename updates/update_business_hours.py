@@ -38,10 +38,10 @@ def updateBusinessHours(db):
                     param = hourString+"."+day
                     print("Enter the new timings for the chosen day:")
                     timings = input()
-                    filter = {'name' : name}
+                    #filter = {'name' : name}
                     query = {param : timings}
-                    collection.update_one(filter,{"$set" : query})
-                    output = list(collection.find({"$and":[{"name" : name},{"address" : address},{"postal_code":pincode}]},{"hours" : 1}))
+                    collection.update({"$and":[{"name" : name},{"address" : address},{"postal_code":pincode},{"state" : state}]},{"$set" : query},upsert=False,multi=True)
+                    output = list(collection.find({"$and":[{"name" : name},{"address" : address},{"postal_code":pincode},{"state" : state}]},{"hours" : 1}))
                     hoursJSON = output[0]['hours']
                     print("The updated timings:")
                     for key, value in hoursJSON.items():
