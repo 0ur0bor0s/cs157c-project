@@ -3,8 +3,6 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from analysis.find_business import find_business
 
-nltk.download('vader_lexicon')
-
 def sentiment(db):
     print("== Review sentiment analysis ==")
 
