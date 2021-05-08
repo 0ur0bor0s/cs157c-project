@@ -1,3 +1,9 @@
+# ======================================================
+# ---------------Yelp Business Finder-------------------
+# ======================================================
+# Team Name: Yelp Team
+# Members: Ralph Dela Cruz, Pranjali Bansod, Ben Foley 
+
 #!/usr/bin/env python3
 from pymongo import MongoClient
 
