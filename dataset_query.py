@@ -29,7 +29,7 @@ from analysis.sentiment import sentiment
 
 def main():
     # Make database connection
-    client = MongoClient('localhost', 27017)
+    client = MongoClient('localhost', 27021)
     db = client['yelp_dataset']
 
     if db:
