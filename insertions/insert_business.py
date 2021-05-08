@@ -40,7 +40,7 @@ def insert_business(db):
             "city": city,
             "state": state,
             "postal_code": postal_code,
-            "latutude": lat,
+            "latitude": lat,
             "longitude": lon,
             "stars": 0.0,
             "review_count": 0,
